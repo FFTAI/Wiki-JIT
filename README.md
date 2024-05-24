@@ -8,7 +8,7 @@ This repository provides the scripts and models for the Fourier Intelligence GRx
 
 The repository contains the following:
 
-- **scripts**: Python scripts for generating the robot models.
+- **scripts**: Python scripts for generating the jit models.
 - **models**: Neural network models for the robot controllers.
 
 ## User Guide
