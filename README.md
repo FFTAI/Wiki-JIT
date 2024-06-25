@@ -2,20 +2,13 @@
 
 ![](./pictures/1.png)
 
-This repository provides the scripts and models for the Fourier Intelligence GRx Robot Model Repository.
-
-## Description
-
-The repository contains the following:
-
-- **scripts**: Python scripts for generating the jit models.
-- **models**: Neural network models for the robot controllers.
+This repository provides the python scripts to generate the jit models for the Fourier Intelligence GRx Robot Model Repository.
 
 ## User Guide
 
 1. Change the configuration of the policy model in the `jit.py` script, based on the controller policy model you used in the training.
 
-```
+```python
 self.num_actor_obs = 39
 self.num_critic_obs = 168
 self.num_actions = 10
@@ -28,7 +21,7 @@ self.init_noise_std = 1.0
 2. Run the following command to generate the robot models:
 
 ```
-python jit.py
+python jit.py <YOUR_MODEL_FILE>
 ```
 
 ---

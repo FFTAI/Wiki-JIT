@@ -1,6 +1,7 @@
 import numpy
 import torch
 import time
+import argparse
 
 from actor_critic_mlp import ActorCriticMLP
 
@@ -53,11 +54,16 @@ class ActorCriticMLPPolicy:
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Python scripts for generating the jit models.')
+    parser.add_argument('model_path', type=str, help='Path to the model file')
+    
+    args = parser.parse_args()
+
     # create model
     model_policy = ActorCriticMLPPolicy()
 
     # load model
-    model_policy.load_model(model_path="./model_4000.pt")
+    model_policy.load_model(model_path=args.model_path)
 
     # transform to jit
     model_policy.transtojit()
