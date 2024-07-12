@@ -7,15 +7,21 @@ from actor_critic_mlp import ActorCriticMLP
 
 
 class ActorCriticMLPPolicy:
-    def __init__(self):
+    def __init__(self,
+                 num_actor_obs=39,
+                 num_critic_obs=168,
+                 num_actions=10,
+                 actor_hidden_dims=[512, 256, 128],
+                 critic_hidden_dims=[512, 256, 128],
+                 activation="elu", ):
         super().__init__()
 
-        self.num_actor_obs = 39
-        self.num_critic_obs = 168
-        self.num_actions = 10
-        self.actor_hidden_dims = [512, 256, 128]
-        self.critic_hidden_dims = [512, 256, 128]
-        self.activation = "elu"
+        self.num_actor_obs = num_actor_obs
+        self.num_critic_obs = num_critic_obs
+        self.num_actions = num_actions
+        self.actor_hidden_dims = actor_hidden_dims
+        self.critic_hidden_dims = critic_hidden_dims
+        self.activation = activation
         self.init_noise_std = 1.0
 
         # create model
@@ -56,11 +62,12 @@ class ActorCriticMLPPolicy:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Python scripts for generating the jit models.')
     parser.add_argument('model_path', type=str, help='Path to the model file')
-    
+
     args = parser.parse_args()
 
     # create model
-    model_policy = ActorCriticMLPPolicy()
+    model_policy = ActorCriticMLPPolicy(num_actor_obs=39 * 20,
+                                        num_critic_obs=168 * 20, )
 
     # load model
     model_policy.load_model(model_path=args.model_path)
