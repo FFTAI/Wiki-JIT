@@ -66,8 +66,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # create model
-    model_policy = ActorCriticMLPPolicy(num_actor_obs=39 * 20,
-                                        num_critic_obs=168 * 20, )
+    model_policy = ActorCriticMLPPolicy(num_actor_obs=(49 + 1 * 3) * 5,
+                                        num_critic_obs=(178 + 1 * 3) * 5,
+                                        num_actions=(12 + 1))
 
     # load model
     model_policy.load_model(model_path=args.model_path)
